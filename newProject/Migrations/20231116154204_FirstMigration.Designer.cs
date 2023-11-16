@@ -11,7 +11,7 @@ using newProject.Models;
 namespace newProject.Migrations
 {
     [DbContext(typeof(EFDatabaseContext))]
-    [Migration("20231116093617_FirstMigration")]
+    [Migration("20231116154204_FirstMigration")]
     partial class FirstMigration
     {
         /// <inheritdoc />
@@ -35,6 +35,9 @@ namespace newProject.Migrations
                     b.Property<string>("Info")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Rate")
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 

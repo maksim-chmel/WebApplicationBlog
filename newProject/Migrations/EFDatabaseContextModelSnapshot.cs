@@ -33,6 +33,9 @@ namespace newProject.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int>("Rate")
+                        .HasColumnType("int");
+
                     b.HasKey("Id");
 
                     b.ToTable("Contents");

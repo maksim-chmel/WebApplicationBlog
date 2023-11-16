@@ -18,6 +18,6 @@ app.UseRouting();
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}"); // Додано параметр id як необов'язковий
+    pattern: "{controller=Home}/{action=Index}/{id?}"); 
 
 app.Run();

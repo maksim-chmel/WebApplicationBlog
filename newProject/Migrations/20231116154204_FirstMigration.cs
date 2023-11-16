@@ -16,7 +16,8 @@ namespace newProject.Migrations
                 {
                     Id = table.Column<long>(type: "bigint", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Info = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    Info = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Rate = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {

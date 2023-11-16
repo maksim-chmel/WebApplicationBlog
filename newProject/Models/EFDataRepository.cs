@@ -48,5 +48,27 @@ namespace newProject.Models
             _dbContext.Remove(new Content { Id = id}); 
             _dbContext.SaveChanges();
         }
+        public void RateContentUP(long id)
+        {
+            var content = _dbContext.Contents.Find(id);
+
+            if (content != null)
+            {
+                content.Rate++;
+                _dbContext.SaveChanges();
+            }
+        }
+        public void RateContentDown(long id)
+        {
+            var content = _dbContext.Contents.Find(id);
+
+            if (content != null)
+            {
+                content.Rate--;
+                _dbContext.SaveChanges();
+            }
+        }
+
+
     }
 }
