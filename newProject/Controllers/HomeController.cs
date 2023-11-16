@@ -6,27 +6,29 @@ namespace newProject.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
+        private readonly IDataRepository _dataRepository;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(IDataRepository dataRepository)
         {
-            _logger = logger;
+            _dataRepository = dataRepository;
         }
 
         public IActionResult Index()
         {
-            return View();
+            var firstContent = _dataRepository.FindContent(1);
+
+            if (firstContent == null)
+            {
+                return NotFound(); 
+            }
+
+            return View(firstContent);
         }
 
         public IActionResult Privacy()
         {
             return View();
         }
-
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
-        {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
-        }
     }
 }
+
