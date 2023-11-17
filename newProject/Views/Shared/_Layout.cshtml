@@ -26,11 +26,9 @@
                             <li class="d-grid gap-2">
                                 <a class="btn btn-outline-light btn-lg" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                             </li>
+                           
                             <li class="d-grid gap-2">
-                                <a class="btn btn-outline-light btn-lg" asp-area="" asp-controller="Home" asp-action="AboutUs">About Us</a>
-                            </li>
-                            <li class="d-grid gap-2">
-                                <a class="btn btn-outline-light btn-lg" asp-area="" asp-controller="Home" asp-action="Random">Випадкова стаття</a>
+                                <a class="btn btn-outline-light btn-lg" asp-area="" asp-controller="Home" asp-action="TopContent">Найцікавіші статті</a>
                             </li>
                             <li class="nav-item dropdown ">
                                 <div class="btn-group">
@@ -38,9 +36,15 @@
                                         Випадаючий список
                                     </button>
                                     <ul class="dropdown-menu">
-                                        <li><a class="dropdown-item" href="#">Випадаюча ссылка 1</a></li>
-                                        <li><a class="dropdown-item" href="#">Випадаюча ссылка 2</a></li>
-                                        <li><a class="dropdown-item" href="#">Випадаюча ссылка 3</a></li>
+                                        <a asp-controller="Home" asp-action="AboutUs" class="dropdown-item">
+                                            About Us
+                                        </a>
+                                        <a asp-controller="Home" asp-action="Privacy" class="dropdown-item">
+                                            Privacy
+                                        </a>
+                                        <a asp-controller="Home" asp-action="AboutUs" class="dropdown-item">
+                                            About Us
+                                        </a>
                                     </ul>
                                 </div>
                             </li>
@@ -59,11 +63,12 @@
         </main>
     </div>
 
-    <footer class="border-top footer text-muted">
+    <footer class="border-top footer text-white bg-dark">
         <div class="container">
-            &copy; 2023 - newProject - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+            &copy; 2023 - newProject - <a asp-area="" asp-controller="Home" asp-action="Privacy" class="text-white">Privacy</a>
         </div>
     </footer>
+   
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>

@@ -1,4 +1,6 @@
-﻿using Microsoft.VisualBasic;
+﻿using Microsoft.AspNetCore.Diagnostics;
+using Microsoft.AspNetCore.Http.HttpResults;
+using Microsoft.VisualBasic;
 
 namespace newProject.Models
 {
@@ -13,41 +15,7 @@ namespace newProject.Models
         {
             return _dbContext.Contents.Find(id);
         }
-        public Content FindRandomContent()
-        {
-            // Отримати кількість всіх записів
-            int count = _dbContext.Contents.Count();
-
-            // Згенерувати випадковий індекс
-            Random random = new Random();
-            int randomIndex = random.Next(count);
-
-            // Вибрати запис з випадковим індексом
-            return _dbContext.Contents.Skip(randomIndex).FirstOrDefault();
-        }
-        public void CreateContent(Content content)
-        {
-            content.Id = 0;
-            _dbContext.Contents.Add(content);
-            _dbContext.SaveChanges(); 
-        }
-        public void UpdateContent(Content firstcontent,Content secondcontent)
-        {
-            if (firstcontent != null)
-            {
-                firstcontent = _dbContext.Contents.Find(firstcontent.Id);  
-                
-            }
-            _dbContext.Contents.Attach(secondcontent);
-            firstcontent.Id = secondcontent.Id;
-            firstcontent.Info = secondcontent.Info;
-            _dbContext.SaveChanges();
-        }
-        public void DeleteContent(long id) 
-        {
-            _dbContext.Remove(new Content { Id = id}); 
-            _dbContext.SaveChanges();
-        }
+      
         public void RateContentUP(long id)
         {
             var content = _dbContext.Contents.Find(id);
@@ -68,6 +36,40 @@ namespace newProject.Models
                 _dbContext.SaveChanges();
             }
         }
+       public long FindSmallestID()
+       {
+            var smallerID = _dbContext.Contents.Min(content =>content.Id);
+            return smallerID;
+       }
+
+        public Content NextContent(long currentId)
+        {
+            if (currentId != _dbContext.Contents.Max(c => c.Id))
+            {
+
+                return _dbContext.Contents.FirstOrDefault(c => c.Id > currentId);
+            }
+            return null;
+        }
+
+        public Content PreviousContent(long currentId)
+        {
+            if (currentId != _dbContext.Contents.Min(c => c.Id))
+            {
+                return _dbContext.Contents.OrderBy(c => c.Id).LastOrDefault(c => c.Id < currentId);
+            }
+            return null;
+        }
+        public List<Content> Top()
+        {
+            var topContent = _dbContext.Contents
+                .OrderByDescending(c => c.Rate)
+                .Take(3)
+                .ToList();
+
+            return topContent;
+        }
+
 
 
     }
