@@ -1,16 +1,13 @@
 ﻿@model newProject.Models.Content
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Content Details</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-</head>
+@{
+    ViewData["Title"] = "Контент";
+}
 <body class="bg-light">
 
     <div class="container mt-5">
         <h1 class="mb-4">Content Details</h1>
 
-        <div class="card bg-success text-white">
+        <div class="card overflow-auto bg-success text-white">
             <div class="card-body">
                 <p class="card-text">ID: @Model.Id</p>
                 <p class="card-text">Info: @Model.Info</p>
@@ -53,8 +50,6 @@
         </div>
     </div>
 
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    
 </body>
-</html>
+

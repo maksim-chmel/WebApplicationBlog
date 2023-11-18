@@ -13,7 +13,7 @@
         <nav class="navbar bg-dark fixed-top">
             <div class="container-fluid">
                 <button class="btn btn-outline-light" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
-                    Меню
+                    Menu
                 </button>
 
                 <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
@@ -22,29 +22,34 @@
                         <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Закрити"></button>
                     </div>
                     <div class="offcanvas-body">
-                        <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
-                            <li class="d-grid gap-2">
-                                <a class="btn btn-outline-light btn-lg" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                        <ul class="d-grid gap-2">
+                            <li class="nav-item">
+                                <a class="btn btn-outline-light btn-lg" asp-area="" asp-controller="Home" asp-action="HomePage">Home</a>
                             </li>
-                           
-                            <li class="d-grid gap-2">
-                                <a class="btn btn-outline-light btn-lg" asp-area="" asp-controller="Home" asp-action="TopContent">Найцікавіші статті</a>
+                        </ul>
+
+                        <ul class="d-grid gap-2">
+                            <li class="nav-item">
+                                <a class="btn btn-outline-light btn-lg" asp-area="" asp-controller="Home" asp-action="Index">Content</a>
                             </li>
-                            <li class="nav-item dropdown ">
+                        </ul>
+
+                        <ul class="d-grid gap-2">
+                            <li class="nav-item">
+                                <a class="btn btn-outline-light btn-lg" asp-area="" asp-controller="Home" asp-action="TopContent">Top content</a>
+                            </li>
+                        </ul>
+
+                        <ul class="d-grid gap-2">
+                            <li class="nav-item dropdown">
                                 <div class="btn-group">
                                     <button type="button" class="btn btn-outline-light dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
                                         Випадаючий список
                                     </button>
                                     <ul class="dropdown-menu">
-                                        <a asp-controller="Home" asp-action="AboutUs" class="dropdown-item">
-                                            About Us
-                                        </a>
-                                        <a asp-controller="Home" asp-action="Privacy" class="dropdown-item">
-                                            Privacy
-                                        </a>
-                                        <a asp-controller="Home" asp-action="AboutUs" class="dropdown-item">
-                                            About Us
-                                        </a>
+                                        <li><a asp-controller="Home" asp-action="AboutUs" class="dropdown-item">About Us</a></li>
+                                        <li><a asp-controller="Home" asp-action="Privacy" class="dropdown-item">Privacy</a></li>
+                                        <li><a asp-controller="Home" asp-action="ContactUs" class="dropdown-item">Contact Us</a></li>
                                     </ul>
                                 </div>
                             </li>
@@ -53,10 +58,8 @@
                 </div>
             </div>
         </nav>
-
-
-
     </header>
+
     <div class="container">
         <main role="main" class="pb-3">
             @RenderBody()
@@ -68,7 +71,7 @@
             &copy; 2023 - newProject - <a asp-area="" asp-controller="Home" asp-action="Privacy" class="text-white">Privacy</a>
         </div>
     </footer>
-   
+
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>

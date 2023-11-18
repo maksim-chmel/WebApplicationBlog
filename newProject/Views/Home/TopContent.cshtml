@@ -1,11 +1,8 @@
 ﻿@model IEnumerable<newProject.Models.Content>
 
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Top Content</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-</head>
+@{
+    ViewData["Title"] = "Топ контент";
+}
 <body class="bg-light">
 
     <div class="container mt-5">
@@ -13,7 +10,7 @@
 
         @foreach (var content in Model)
         {
-            <div class="card bg-success text-white mb-3">
+            <div class="card overflow-auto bg-success text-white mb-3">
                 <div class="card-body">
                     <p class="card-text">ID: @content.Id</p>
                     <p class="card-text">Info: @content.Info</p>
@@ -23,8 +20,5 @@
 
     </div>
 
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    
 </body>
-</html>

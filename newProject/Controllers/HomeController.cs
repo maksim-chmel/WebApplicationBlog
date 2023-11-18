@@ -13,6 +13,14 @@ namespace newProject.Controllers
             _dataRepository = dataRepository;
         }
 
+        public IActionResult HomePage() 
+        {
+            return View();
+        }
+        public IActionResult ContactUs()
+        {
+            return View();
+        }
         public IActionResult Index()
         {
 
