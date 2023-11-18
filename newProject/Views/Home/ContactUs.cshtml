@@ -1,5 +1,6 @@
-﻿@{
-    ViewData["Title"] = "Контакти";
+﻿@model newProject.Models.Feedback
+@{
+    ViewData["Title"] = "Contacts";
 }
 
 <div class="container mt-5" style="margin-top: 50px;">
@@ -7,19 +8,44 @@
 
     <p class="lead">Маєте питання чи пропозиції? Заповніть форму нижче, і ми зв'яжемося з вами найближчим часом.</p>
 
-    <form>
+    <form method="post" asp-action="SendFeedback">
         <div class="mb-3">
             <label for="name" class="form-label">Ім'я:</label>
-            <input type="text" class="form-control" id="name" name="name" required>
+            <input type="text" class="form-control" id="name" name="Name" required>
+        </div>
+        <div class="mb-3">
+            <label for="surname" class="form-label">Прізвище:</label>
+            <input type="text" class="form-control" id="surname" name="Surname"  required>
+        </div>
+        <div class="mb-3">
+            <label for="phoneNumber" class="form-label">Номер телефону:</label>
+            <input type="tel" class="form-control" id="phoneNumber" name="PhoneNumber"  required>
         </div>
         <div class="mb-3">
             <label for="email" class="form-label">Електронна пошта:</label>
-            <input type="email" class="form-control" id="email" name="email" required>
+            <input type="email" class="form-control" id="email" name="EmailAddress" required>
         </div>
         <div class="mb-3">
             <label for="message" class="form-label">Повідомлення:</label>
-            <textarea class="form-control" id="message" name="message" rows="5" required></textarea>
+            <textarea class="form-control" id="message" name="Message" rows="5" required></textarea>
         </div>
-        <button type="submit" class="btn btn-primary">Надіслати</button>
+        <button type="submit" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">Надіслати</button>
     </form>
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Дякуємо за звернення</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Закрыть"></button>
+                </div>
+                <div class="modal-body">
+                    Ваше повідомлення доставлено 
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Ок</button>
+                   
+                </div>
+            </div>
+        </div>
+    </div>
 </div>

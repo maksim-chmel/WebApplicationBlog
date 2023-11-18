@@ -8,5 +8,6 @@ namespace newProject.Models
     {
         public EFDatabaseContext(DbContextOptions<EFDatabaseContext> opts) : base(opts) { }
         public DbSet<Content> Contents { get; set; }
+        public DbSet<Feedback> Feedbacks { get; set; }
     }
 }

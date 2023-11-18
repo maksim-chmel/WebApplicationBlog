@@ -7,12 +7,14 @@ namespace newProject.Controllers
     public class HomeController : Controller
     {
         private readonly IDataRepository _dataRepository;
+        private readonly IFeedbackRepository _feedbackRepository;
 
-        public HomeController(IDataRepository dataRepository)
+        public HomeController(IDataRepository dataRepository,IFeedbackRepository feedbackRepository)
         {
             _dataRepository = dataRepository;
+            _feedbackRepository = feedbackRepository;
         }
-
+       
         public IActionResult HomePage() 
         {
             return View();
@@ -39,7 +41,14 @@ namespace newProject.Controllers
             var topContent = _dataRepository.Top();
             return View("TopContent", topContent);
         }
-
+        [HttpPost]
+        public IActionResult SendFeedback(Feedback feedback)
+        {
+            _feedbackRepository.AddFeedback(feedback);
+           return View("ContactUs");
+            
+           
+        }
         [HttpPost]
         public IActionResult RateUp(long id)
         {
